@@ -1,0 +1,18 @@
+name: fetiguex_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.3
+  - fenics-dolfinx
+  - gmsh
+  - python-gmsh
+  - pyvista
+  - paraview
+  - numpy
+  - matplotlib
+  - pytest
+  - sphinx
+  - pip
+  - pip:
+    - -e .

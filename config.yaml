@@ -1,0 +1,29 @@
+# Compact Tension (CT) Specimen Configuration
+
+geometry:
+  type: "CT"
+  L: 1.0                # Characteristic length
+  width_factor: 1.25    # Multiplier for L to get total width
+  height_factor: 1.2    # Multiplier for L to get total height
+  hole_radius: 0.125    # Radius of loading holes
+  notch_length: 0.55    # Initial crack length
+  notch_width: 0.02     # Thickness of the machined notch
+  hole_offset: 0.275    # Vertical distance from centerline to hole centers
+
+mesh:
+  output_file: "ct_mesh.msh"
+  h_bulk: 0.05          # Coarse element size for the main body
+  h_fine: 0.005         # Extremely fine element size for the crack path
+  # Define the bounding box where the h_fine mesh will be applied
+  refinement_box:
+    x_min: 0.50         # Start slightly behind the notch tip
+    x_max: 1.25         # Extend to the right edge
+    y_min: 0.55         # Slightly below the crack path
+    y_max: 0.65         # Slightly above the crack path
+    thickness: 0.05     # Transition zone thickness from fine to coarse
+
+material:
+  E: 210e3              # Young's Modulus (MPa)
+  nu: 0.3               # Poisson's ratio
+  Gc: 2.7               # Critical energy release rate (N/mm)
+  l0: 0.015             # Phase-field length scale (h_fine must be < l0/2)
